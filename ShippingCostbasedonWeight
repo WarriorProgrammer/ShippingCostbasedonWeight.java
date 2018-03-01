@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+
+public class ShippingCostbasedonWeight {
+  public static void main(String[] args) {
+  Scanner in = new Scanner(System.in);
+  DecimalFormat df = new DecimalFormat("#.00");
+  double weight, distance, distanceTemp;
+  double cost = 0.0;
+  int count = 0;
+  
+  //test requirements of weight
+  do {
+    System.out.print("Enter weight of packages:");
+    weight = in.nextDouble();
+    if(weight <= 0 || weight > 20)
+    {
+      System.out.println("Your package doesn't meet weight requirement, try again");
+    }
+    // ask user for distance traveled
+  } while (weight <= 0 || weight > 20);
+  System.out.print("Enter Distance traveled in miles: ");
+  distance = in.nextDouble();
+  distanceTemp = distance;
+  
+  while(distanceTemp > 0)
+  {
+    distanceTemp -= 500;
+    count++;
+  }
+  
+  //this is the formula to find weight
+  if (weight <=2 )
+  {
+    cost = count * 1.10;
+  } else if (weight > 2 && weight <=6){
+        cost = count * 2.20;
+  }else if (weight > 6 && weight <=10){
+        cost = count * 3.70;
+  }else if (weight > 10 ){
+        cost = count * 4.80;
+  }
+   
+  //print weight and cost results
+   System.out.println("The Cost of " + weight + "kg to travel " + distance +" miles is: $" + df.format(cost));
+ 
+
+  }
+}
+
+
+
+
+
+
+
+
